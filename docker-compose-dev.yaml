@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  react:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app # Mount the current directory to the working directory inside the container
