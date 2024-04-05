@@ -5,7 +5,6 @@ import {useRecoilState} from "recoil";
 import React, {useEffect} from "react";
 import axios from "axios";
 import {IAuthResponse} from "../common/Types";
-import {Spin} from "antd";
 import Spinner from "../components/Spinner";
 
 const Logout: React.FC = () => {
@@ -20,7 +19,7 @@ const Logout: React.FC = () => {
                 localStorage.removeItem('accessToken');
                 localStorage.removeItem('refreshToken');
                 axios.defaults.headers.common.Authorization = '';
-                navigate('/login');
+                navigate('/');
             }).catch(e => {
                 // Handle login error, TODO
                 console.log('Error: ', e)

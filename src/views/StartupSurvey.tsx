@@ -12,7 +12,6 @@ import {transformToEvidences} from "../common/Utils";
 import * as SurveyTheme from "survey-core/themes";
 import Spinner from "../components/Spinner";
 import 'survey-core/defaultV2.min.css';
-import {Box} from "@mui/material";
 
 
 const StartupSurvey: React.FC = () => {
@@ -47,12 +46,12 @@ const StartupSurvey: React.FC = () => {
     if (loading) return <Spinner/>;
 
     return (
-        <Box>
+        <div>
             <Survey
                 model={survey}
                 id="surveyContainer"
             />
-        </Box>
+        </div>
     )
 };
 

@@ -1,29 +1,34 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./views/Home";
 import Login from "./views/Login";
-import Register from "./views/Register";
 import Logout from "./views/Logout";
 import StartupSurvey from "./views/StartupSurvey";
 import Evaluation from "./views/Evaluation";
-import Container from '@mui/material/Container';
-import {CssBaseline} from "@mui/material";
+import CustomHeader from "./views/Header";
+import CustomFooter from "./views/Footer";
+import {Layout} from "antd";
+import {Content} from "antd/lib/layout/layout";
 
 function App() {
     return (
-        <Container maxWidth="md">
-            <CssBaseline/>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/login" element={<Login/>}/>
-                    <Route path="/register" element={<Register/>}/>
-                    <Route path="/logout" element={<Logout/>}/>
-                    <Route path="/startup/evaluate" element={<StartupSurvey/>}/>
-                    <Route path="/startup/:jobId" element={<Evaluation/>}/>
-                </Routes>
-            </BrowserRouter>
-        </Container>
+        <BrowserRouter>
+            <Layout style={{minHeight: '100vh', backgroundColor: '#ffffff'}}>
+                <Suspense fallback={null}>
+                    <CustomHeader/>
+                    <Content>
+                        <Routes>
+                            <Route path="/" element={<Home/>}/>
+                            <Route path="/login" element={<Login/>}/>
+                            <Route path="/logout" element={<Logout/>}/>
+                            <Route path="/startup/evaluate" element={<StartupSurvey/>}/>
+                            <Route path="/startup/:jobId" element={<Evaluation/>}/>
+                        </Routes>
+                    </Content>
+                    <CustomFooter/>
+                </Suspense>
+            </Layout>
+        </BrowserRouter>
     );
 }
 
