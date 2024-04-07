@@ -5,7 +5,7 @@ import {useRecoilState} from "recoil";
 import React, {useEffect} from "react";
 import axios from "axios";
 import {IAuthResponse} from "../common/Types";
-import Spinner from "../components/Spinner";
+import Spinner from "./Spinner";
 
 const Logout: React.FC = () => {
     const [auth, setAuth] = useRecoilState<IAuthResponse | null>(authAtom);
@@ -27,7 +27,7 @@ const Logout: React.FC = () => {
         }
     }, [auth, setAuth, navigate]);
 
-    return <Spinner/>;
+    return <Spinner/>
 }
 
 export default Logout

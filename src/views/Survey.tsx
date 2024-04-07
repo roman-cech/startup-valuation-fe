@@ -11,10 +11,11 @@ import {Survey} from "survey-react-ui";
 import {transformToEvidences} from "../common/Utils";
 import * as SurveyTheme from "survey-core/themes";
 import Spinner from "../components/Spinner";
+import Container from "../components/Container";
 import 'survey-core/defaultV2.min.css';
 
 
-const StartupSurvey: React.FC = () => {
+const CustomSurvey: React.FC = () => {
     const auth = useRecoilValue<IAuthResponse>(authAtom);
     const navigate = useNavigate();
 
@@ -24,7 +25,7 @@ const StartupSurvey: React.FC = () => {
     const [_, setEvaluation] = useRecoilState<IStartupValuationResponse | null>(evaluationAtom)
 
     const survey = useRef(new Model(surveyJSON)).current
-    survey.applyTheme(SurveyTheme.DoubleBorderLight)
+    survey.applyTheme(SurveyTheme.PlainLight)
 
     const surveyData = useCallback(async (sender: { data: any }) => {
         setLoading(true);
@@ -46,13 +47,13 @@ const StartupSurvey: React.FC = () => {
     if (loading) return <Spinner/>;
 
     return (
-        <div>
+        <Container className="flex items-center flex-1">
             <Survey
                 model={survey}
                 id="surveyContainer"
             />
-        </div>
+        </Container>
     )
-};
+}
 
-export default StartupSurvey;
+export default CustomSurvey

@@ -39,6 +39,16 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Styling
+
+### Tailwind CSS
+
+Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces. It provides low-level utility classes that let you quickly build designs without having to leave your HTML.
+
+### Ant Design
+
+Ant Design is a popular UI library for React that provides a set of high-quality React components and themes. It offers a wide range of components, such as buttons, forms, navigation, and more, to help you build beautiful and responsive user interfaces.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).

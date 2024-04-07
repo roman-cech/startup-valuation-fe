@@ -1,6 +1,5 @@
 const SurveyJSON =
     {
-        "title": "Evaluate your startup!",
         "pages": [
         {
             "name": "page0",
