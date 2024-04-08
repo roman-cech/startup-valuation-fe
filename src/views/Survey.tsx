@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {useNavigate} from "react-router-dom";
 import {useRecoilState, useRecoilValue} from "recoil";
 import apiService from "../api/ApiService";
@@ -16,35 +16,34 @@ import 'survey-core/defaultV2.min.css';
 
 
 const CustomSurvey: React.FC = () => {
-    const auth = useRecoilValue<IAuthResponse>(authAtom);
-    const navigate = useNavigate();
+    const auth = useRecoilValue<IAuthResponse>(authAtom)
+    const navigate = useNavigate()
 
     const [loading, setLoading] = useState(false)
-    //const [error, setError] = useState(false)
 
-    const [_, setEvaluation] = useRecoilState<IStartupValuationResponse | null>(evaluationAtom)
+    const [, setEvaluation] = useRecoilState<IStartupValuationResponse | null>(evaluationAtom)
 
     const survey = useRef(new Model(surveyJSON)).current
     survey.applyTheme(SurveyTheme.PlainLight)
 
-    const surveyData = useCallback(async (sender: { data: any }) => {
+    const handleSurveyComplete = async (sender: { data: any }) => {
         setLoading(true);
-        const jobId = (await apiService.evaluate(transformToEvidences(sender.data))).data
-        const evaluation = (await apiService.getEvaluation(jobId)).data.evaluation
+        const jobId = (await apiService.evaluate(transformToEvidences(sender.data))).data;
+        const evaluation = (await apiService.getEvaluation(jobId)).data.evaluation;
         setEvaluation(evaluation);
         setLoading(false);
         navigate(`/startup/${jobId}`);
-    }, [navigate, setEvaluation]);
+    };
 
-    survey.onComplete.add(surveyData);
+    survey.onComplete.add(handleSurveyComplete)
 
     useEffect(() => {
         if (auth?.token?.accessToken === undefined) {
             navigate("/login")
         }
-    }, [auth, navigate]);
+    }, [auth, navigate])
 
-    if (loading) return <Spinner/>;
+    if (loading) return <Spinner/>
 
     return (
         <Container className="flex items-center flex-1">

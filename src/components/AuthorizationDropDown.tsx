@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Avatar, Button, Col, Row, Typography } from 'antd';
+import {Avatar, Button, Col, Row, Typography} from 'antd';
 import {
     UserOutlined,
     SettingOutlined,
@@ -10,18 +10,14 @@ import {
 } from '@ant-design/icons';
 import {IAuthResponse} from "../common/Types";
 
-const { Title, Paragraph } = Typography;
-
-interface Props { auth: IAuthResponse }
-
-const AuthorizationDropDown: React.FC<Props> = ({ auth }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const toggleDropdown = () => setIsOpen(!isOpen);
+const AuthorizationDropDown = ({ auth }: { auth: IAuthResponse }) => {
+    const [isOpen, setIsOpen] = useState(false)
+    const onToggleDropdown = () => setIsOpen(!isOpen)
 
     return auth?.user?.email ? (
         <Row className="relative inline-block">
             <Button
-                onClick={toggleDropdown}
+                onClick={onToggleDropdown}
                 className="bg-white relative z-10 flex items-center p-2 text-sm text-gray-600 rounded-md focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:text-white dark:bg-gray-800 border-none"
             >
                 <UserOutlined className="mx-1" />
@@ -43,10 +39,10 @@ const AuthorizationDropDown: React.FC<Props> = ({ auth }) => {
                             src="https://images.unsplash.com/flagged/photo-1573603867003-89f5fd7a7576?q=80&w=2846&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         />
                         <Col className="mx-1">
-                            <Title level={4} className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                            <Typography.Title level={4} className="text-sm font-semibold text-gray-700 dark:text-gray-200">
                                 {auth.user.firstName + ' ' + auth.user.lastName}
-                            </Title>
-                            <Paragraph className="text-sm text-gray-500 dark:text-gray-400">{auth.user.email}</Paragraph>
+                            </Typography.Title>
+                            <Typography.Paragraph className="text-sm text-gray-500 dark:text-gray-400">{auth.user.email}</Typography.Paragraph>
                         </Col>
                     </Link>
 
@@ -80,7 +76,7 @@ const AuthorizationDropDown: React.FC<Props> = ({ auth }) => {
 
                     <Link
                         to="/logout"
-                        onClick={toggleDropdown}
+                        onClick={onToggleDropdown}
                         className="flex items-center p-3 text-sm text-gray-600 capitalize transition-colors duration-300 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
                     >
                         <LogoutOutlined className="w-5 h-5 mx-1" />

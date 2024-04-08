@@ -7,7 +7,7 @@ import Container from "../components/Container";
 
 const Home: React.FC = () => {
     return (
-        <Container className="pt-20 pb-16 text-center lg:pt-32">
+        <Container className="pt-20 pb-16 text-center lg:pt-26">
             <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
                 Startup valuation success,{' '}
                 <span className="relative whitespace-nowrap text-blue-600">
@@ -42,6 +42,7 @@ const Home: React.FC = () => {
                         <Image
                             style={{width: '50%', display: 'block', margin: '0 auto'}}
                             src="https://vizual.utb.cz/utb/utb400.jpg"
+                            preview={false}
                             alt="UTB"
                         />
                     </Col>
@@ -49,6 +50,7 @@ const Home: React.FC = () => {
                         <Image
                             style={{width: '50%', display: 'block', margin: '0 auto'}}
                             src="https://www.isep.ipp.pt/images/ISEP_marca_cor_grande.jpg"
+                            preview={false}
                             alt="ISEP"
                         />
                     </Col>

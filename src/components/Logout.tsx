@@ -8,24 +8,24 @@ import {IAuthResponse} from "../common/Types";
 import Spinner from "./Spinner";
 
 const Logout: React.FC = () => {
-    const [auth, setAuth] = useRecoilState<IAuthResponse | null>(authAtom);
-    const navigate = useNavigate();
+    const [auth, setAuth] = useRecoilState<IAuthResponse | null>(authAtom)
+    const navigate = useNavigate()
 
     useEffect(() => {
-        if(auth?.token?.accessToken !== undefined) {
+        if (auth?.token?.accessToken !== undefined) {
             apiService.logout(auth.token.accessToken).then(_ => {
-                setAuth(null);
-                localStorage.removeItem('user');
-                localStorage.removeItem('accessToken');
-                localStorage.removeItem('refreshToken');
-                axios.defaults.headers.common.Authorization = '';
-                navigate('/');
+                setAuth(null)
+                localStorage.removeItem('user')
+                localStorage.removeItem('accessToken')
+                localStorage.removeItem('refreshToken')
+                axios.defaults.headers.common.Authorization = ''
+                navigate('/')
             }).catch(e => {
                 // Handle login error, TODO
                 console.log('Error: ', e)
             })
         }
-    }, [auth, setAuth, navigate]);
+    }, [])
 
     return <Spinner/>
 }

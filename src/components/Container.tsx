@@ -5,15 +5,18 @@ interface ContainerProps {
     children?: React.ReactNode;
 }
 
-const Container = ({className, children, ...props}: ContainerProps) => {
-    return (
-        <div
-            className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${className}`}
-            {...props}
-        >
-            {children}
-        </div>
-    )
-}
+const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
+    ({className, children, ...props}: ContainerProps,
+     ref) => {
+        return (
+            <div
+                ref={ref}
+                className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ${className}`}
+                {...props}
+            >
+                {children}
+            </div>
+        )
+    })
 
 export default Container

@@ -5,6 +5,6 @@ export const transformToEvidences = (data: { [key: string]: string | number }): 
         {
             description,
             value: typeof value === 'string' ? value : String(value)
-        }
-        ));
-};
+        })
+    )
+}

@@ -12,7 +12,7 @@ import {BarsOutlined, MenuOutlined,} from "@ant-design/icons";
 
 const CustomHeader: React.FC = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    const auth = useRecoilValue<IAuthResponse>(authAtom);
+    const auth = useRecoilValue<IAuthResponse>(authAtom)
 
     return (
         <Header className="bg-white">

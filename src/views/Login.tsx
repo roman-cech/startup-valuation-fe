@@ -8,32 +8,32 @@ import {Button, Form, Input, Row, Typography} from "antd";
 import {MenuOutlined} from "@ant-design/icons";
 
 const Login: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [auth, setAuth] = useRecoilState<IAuthResponse>(authAtom);
-    const navigate = useNavigate();
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [auth, setAuth] = useRecoilState<IAuthResponse>(authAtom)
+    const navigate = useNavigate()
 
     useEffect(() => {
         //redirect to home if already logged in
         if (auth?.token?.refreshToken !== undefined) {
-            navigate('/');
+            navigate('/')
         }
-    }, [auth, navigate]);
+    }, [auth, navigate])
 
 
     const handleLogin = async () => {
         apiService.login(email, password).then(res => {
-            setAuth(res.data);
-            localStorage.setItem('user', JSON.stringify(res.data));
-            localStorage.setItem('accessToken', res.data.token.accessToken);
-            localStorage.setItem('refreshToken', res.data.token.refreshToken);
-            navigate('/')
+            setAuth(res.data)
+            localStorage.setItem('user', JSON.stringify(res.data))
+            localStorage.setItem('accessToken', res.data.token.accessToken)
+            localStorage.setItem('refreshToken', res.data.token.refreshToken)
+            navigate('/startup/evaluate')
         }).catch(e => {
             // Handle login error, TODO
             console.log('Error: ', e)
             navigate('/login')
         })
-    };
+    }
 
     return (
         <Row className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -113,6 +113,6 @@ const Login: React.FC = () => {
             </Typography.Paragraph>
         </Row>
     )
-};
+}
 
-export default Login;
+export default Login
