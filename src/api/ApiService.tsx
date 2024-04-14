@@ -1,4 +1,4 @@
-import axiosInstance from '../common/AxiosInstance';
+import axiosInstance from './AxiosInstance';
 import {IAuthResponse, IEvidence, IPairResponse} from "../common/Types";
 import {getAccessTokenFromUser} from "../common/Utils";
 
@@ -7,7 +7,7 @@ type UUID = string
 const logout = () => {
     const headers = { Authorization: `Bearer ${getAccessTokenFromUser()}` }
     return axiosInstance.post<IAuthResponse>(
-        `/rest/v1/log-out?token=${getAccessTokenFromUser()}`,
+        `/rest/v1/auth/logout?token=${getAccessTokenFromUser()}`,
         {},
         { headers }
     )
@@ -15,7 +15,7 @@ const logout = () => {
 
 const login = (email: string, password: string) => {
     return axiosInstance.post<IAuthResponse>(
-        '/rest/v1/auth',
+        '/rest/v1/auth/login',
         {email: email, password: password}
     )
 }

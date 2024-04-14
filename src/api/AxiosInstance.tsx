@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {IToken} from "./Types";
-import {getAccessTokenFromUser, getExpirationDateFromUser, getRefreshTokenFromUser, updateUserToken} from "./Utils";
+import {IToken} from "../common/Types";
+import {getAccessTokenFromUser, getExpirationDateFromUser, getRefreshTokenFromUser, updateUserToken} from "../common/Utils";
 
 const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_SERVER_URL,
@@ -16,7 +16,7 @@ async function refreshToken() {
         const expirationDate = new Date(parseInt(getExpirationDateFromUser()))
         if (expirationDate && expirationDate.getTime() < Date.now()) {
             const response = await axiosInstance.post<IToken>(
-                `/rest/v1/refresh?token=${getRefreshTokenFromUser()}`
+                `/rest/v1/auth/refresh?token=${getRefreshTokenFromUser()}`
             )
             updateUserToken(response.data.accessToken, response.data.refreshToken, response.data.expirationDate)
         }
