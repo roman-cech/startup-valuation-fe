@@ -12,10 +12,8 @@ import {useReactToPrint} from "react-to-print";
 const Evaluation: React.FC = () => {
     const auth = useRecoilValue<IAuthResponse>(authAtom)
     const navigate = useNavigate()
-
     const evaluation = useRecoilValue<IStartupValuationResponse | null>(evaluationAtom)
     const containerRef = useRef<HTMLDivElement>(null)
-
     const handlePrint = useReactToPrint({
         content: () => containerRef.current,
     })

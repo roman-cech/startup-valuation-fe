@@ -18,23 +18,19 @@ import 'survey-core/defaultV2.min.css';
 const CustomSurvey: React.FC = () => {
     const auth = useRecoilValue<IAuthResponse>(authAtom)
     const navigate = useNavigate()
-
     const [loading, setLoading] = useState(false)
-
     const [, setEvaluation] = useRecoilState<IStartupValuationResponse | null>(evaluationAtom)
-
     const survey = useRef(new Model(surveyJSON)).current
+
     survey.applyTheme(SurveyTheme.PlainLight)
 
     const handleSurveyComplete = async (sender: { data: any }) => {
         setLoading(true);
-
         const jobId = (await apiService.evaluate(transformToEvidences(sender.data))).data;
-        const evaluationResponse = await apiService.getEvaluation(jobId);
-        setEvaluation(evaluationResponse.data.evaluation);
+        const evaluation = (await apiService.getEvaluation(jobId)).data.evaluation;
+        setEvaluation(evaluation);
         setLoading(false);
         navigate(`/startup/${jobId}`);
-
     };
 
     survey.onComplete.add(handleSurveyComplete)

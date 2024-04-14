@@ -6,11 +6,13 @@ import {useRecoilState} from "recoil";
 import {IAuthResponse} from "../common/Types";
 import {Button, Form, Input, Row, Typography} from "antd";
 import {MenuOutlined} from "@ant-design/icons";
+import Spinner from "../components/Spinner";
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [auth, setAuth] = useRecoilState<IAuthResponse>(authAtom)
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -22,16 +24,21 @@ const Login: React.FC = () => {
 
 
     const handleLogin = async () => {
+        setLoading(true);
         apiService.login(email, password).then(res => {
             setAuth(res.data)
             localStorage.setItem('user', JSON.stringify(res.data))
+            setLoading(false);
             navigate('/startup/evaluate')
         }).catch(e => {
             // Handle login error, TODO
             console.log('Error: ', e)
+            setLoading(false);
             navigate('/login')
         })
     }
+
+    if (loading) return <Spinner/>
 
     return (
         <Row className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">

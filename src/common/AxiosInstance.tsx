@@ -28,7 +28,6 @@ async function refreshToken() {
 axiosInstance.interceptors.response.use((response) => response, (error) => {
     const {config, response: {status}} = error
     const originalRequest = config;
-    console.log('statusCode: ', status)
     if (status === 500) {
         if (!isRefreshing) {
             isRefreshing = true

@@ -1,14 +1,10 @@
 import React from "react";
-import {ReactComponent as Spin} from "../assets/Spin.svg"
 
 
 const Spinner: React.FC = () => {
     return (
-        <div className="flex justify-center items-center h-screen">
-            <div role="status">
-                <Spin className="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"/>
-                <span className="sr-only">Loading...</span>
-            </div>
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"/>
         </div>
     )
 }
