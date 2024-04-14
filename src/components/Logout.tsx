@@ -13,11 +13,9 @@ const Logout: React.FC = () => {
 
     useEffect(() => {
         if (auth?.token?.accessToken !== undefined) {
-            apiService.logout(auth.token.accessToken).then(_ => {
+            apiService.logout().then(_ => {
                 setAuth(null)
                 localStorage.removeItem('user')
-                localStorage.removeItem('accessToken')
-                localStorage.removeItem('refreshToken')
                 axios.defaults.headers.common.Authorization = ''
                 navigate('/')
             }).catch(e => {

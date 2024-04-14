@@ -1,6 +1,12 @@
 export interface IAuthResponse {
-    token: { accessToken: string, refreshToken: string }
+    token: IToken
     user: { firstName: string, lastName: string, email: string }
+}
+
+export interface IToken {
+    accessToken: string,
+    refreshToken: string,
+    expirationDate: Date
 }
 
 export interface IEvidence {

@@ -25,8 +25,6 @@ const Login: React.FC = () => {
         apiService.login(email, password).then(res => {
             setAuth(res.data)
             localStorage.setItem('user', JSON.stringify(res.data))
-            localStorage.setItem('accessToken', res.data.token.accessToken)
-            localStorage.setItem('refreshToken', res.data.token.refreshToken)
             navigate('/startup/evaluate')
         }).catch(e => {
             // Handle login error, TODO

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useRecoilState, useRecoilValue} from "recoil";
 import apiService from "../api/ApiService";
@@ -28,11 +28,13 @@ const CustomSurvey: React.FC = () => {
 
     const handleSurveyComplete = async (sender: { data: any }) => {
         setLoading(true);
+
         const jobId = (await apiService.evaluate(transformToEvidences(sender.data))).data;
-        const evaluation = (await apiService.getEvaluation(jobId)).data.evaluation;
-        setEvaluation(evaluation);
+        const evaluationResponse = await apiService.getEvaluation(jobId);
+        setEvaluation(evaluationResponse.data.evaluation);
         setLoading(false);
         navigate(`/startup/${jobId}`);
+
     };
 
     survey.onComplete.add(handleSurveyComplete)
