@@ -1,5 +1,4 @@
-import {IAuthResponse, IEvidence} from "./Types";
-import React from "react";
+import {IEvidence} from "./Types";
 
 export const transformToEvidences = (data: { [key: string]: string | number }): IEvidence[] => {
     return Object.entries(data).map(([description, value]) => (

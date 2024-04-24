@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
     }
 })
 
-let isRefreshing = false;
+let needsRefresh = false;
 
 async function refreshToken() {
     try {
@@ -29,20 +29,20 @@ axiosInstance.interceptors.response.use((response) => response, (error) => {
     const {config, response: {status}} = error
     const originalRequest = config;
     if (status === 500) {
-        if (!isRefreshing) {
-            isRefreshing = true
+        if (!needsRefresh) {
+            needsRefresh = true
             refreshToken()
                 .then(() => {
-                    isRefreshing = false
+                    needsRefresh = false
                 })
                 .catch(() => {
-                    isRefreshing = false
+                    needsRefresh = false
                 })
         }
 
         return new Promise((resolve) => {
             const retry = () => {
-                if (!isRefreshing) {
+                if (!needsRefresh) {
                     originalRequest.headers.Authorization = `Bearer ${getAccessTokenFromUser()}`
                     resolve(axios(originalRequest));
                 } else {
