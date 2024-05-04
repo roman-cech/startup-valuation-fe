@@ -10,7 +10,7 @@ import {
 } from '@ant-design/icons';
 import {IAuthResponse} from "../common/Types";
 
-const AuthorizationDropDown = ({ auth }: { auth: IAuthResponse }) => {
+const AuthorizedDropDown = ({ auth }: { auth: IAuthResponse }) => {
     const [isOpen, setIsOpen] = useState(false)
     const onToggleDropdown = () => setIsOpen(!isOpen)
 
@@ -94,4 +94,4 @@ const AuthorizationDropDown = ({ auth }: { auth: IAuthResponse }) => {
     )
 }
 
-export default AuthorizationDropDown
+export default AuthorizedDropDown

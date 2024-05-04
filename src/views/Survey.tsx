@@ -1,14 +1,14 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useRecoilState, useRecoilValue} from "recoil";
-import apiService from "../api/ApiService";
+import ApiService from "../api/ApiService";
 import authAtom from "../api/authAtom";
 import evaluationAtom from "../api/evaluationAtom";
 import {IAuthResponse, IStartupValuationResponse} from "../common/Types";
 import {Model} from "survey-core";
 import surveyJSON from "../common/SurveyJSON";
 import {Survey} from "survey-react-ui";
-import {transformToEvidences} from "../common/Utils";
+import {transformToEvidences} from "../common/Util";
 import * as SurveyTheme from "survey-core/themes";
 import Spinner from "../components/Spinner";
 import Container from "../components/Container";
@@ -26,8 +26,17 @@ const CustomSurvey: React.FC = () => {
 
     const handleSurveyComplete = async (sender: { data: any }) => {
         setLoading(true);
-        const jobId = (await apiService.evaluate(transformToEvidences(sender.data))).data;
-        const evaluation = (await apiService.getEvaluation(jobId)).data.evaluation;
+        let jobId, evaluation = null;
+        try {
+            const evaluateResponse = await ApiService.evaluate(transformToEvidences(sender.data));
+            jobId = evaluateResponse.data;
+
+            const evaluationResponse = await ApiService.getEvaluation(jobId);
+            evaluation = evaluationResponse.data.evaluation;
+        } catch (error) {
+            console.log('Error:', error);
+        }
+
         setEvaluation(evaluation);
         setLoading(false);
         navigate(`/startup/${jobId}`);

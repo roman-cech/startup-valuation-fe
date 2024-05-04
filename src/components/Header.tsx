@@ -5,8 +5,8 @@ import {Button, Row, Typography} from "antd";
 import {Header} from "antd/lib/layout/layout";
 import {useRecoilValue} from "recoil";
 import {IAuthResponse} from "../common/Types";
-import AuthorizationDropDown from "./AuthorizationDropDown"
-import MobileNavigation from "./MobileNavigation"
+import AuthorizedDropDown from "./AuthorizedDropDown"
+import MobileNavigator from "./MobileNavigator"
 import authAtom from "../api/authAtom";
 import {BarsOutlined, MenuOutlined,} from "@ant-design/icons";
 
@@ -47,10 +47,10 @@ const CustomHeader: React.FC = () => {
                     </Link>
                 </Popover.Group>
                 <Row className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <AuthorizationDropDown auth={auth} />
+                    <AuthorizedDropDown auth={auth} />
                 </Row>
             </nav>
-            <MobileNavigation mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} auth={auth} />
+            <MobileNavigator mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} auth={auth} />
         </Header>
     )
 }

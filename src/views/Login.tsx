@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import apiService from "../api/ApiService";
+import ApiService from "../api/ApiService";
 import authAtom from "../api/authAtom";
 import {useRecoilState} from "recoil";
 import {IAuthResponse} from "../common/Types";
@@ -25,7 +25,7 @@ const Login: React.FC = () => {
 
     const handleLogin = async () => {
         setLoading(true);
-        apiService.login(email, password).then(res => {
+        ApiService.login(email, password).then(res => {
             setAuth(res.data)
             localStorage.setItem('user', JSON.stringify(res.data))
             setLoading(false);

@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import apiService from "../api/ApiService";
+import ApiService from "../api/ApiService";
 import authAtom from "../api/authAtom";
 import {useRecoilState} from "recoil";
 import React, {useEffect, useRef} from "react";
@@ -17,7 +17,7 @@ const Logout: React.FC = () => {
             isMounted.current = true
 
             if (auth?.token?.accessToken !== undefined) {
-                apiService.logout().then(_ => {
+                ApiService.logout().then(_ => {
                     setAuth(null)
                     localStorage.removeItem('user')
                     axios.defaults.headers.common.Authorization = ''

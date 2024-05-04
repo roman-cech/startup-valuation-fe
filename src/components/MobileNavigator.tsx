@@ -4,9 +4,9 @@ import {Dialog} from "@headlessui/react";
 import {Button, Col, Row, Typography} from "antd";
 import {Link} from "react-router-dom";
 import {CloseOutlined, MenuOutlined} from "@ant-design/icons";
-import AuthorizationDropDown from "./AuthorizationDropDown";
+import AuthorizedDropDown from "./AuthorizedDropDown";
 
-const MobileNavigation = ({ mobileMenuOpen, setMobileMenuOpen, auth }: { mobileMenuOpen: boolean; setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>; auth: IAuthResponse }) => {
+const MobileNavigator = ({ mobileMenuOpen, setMobileMenuOpen, auth }: { mobileMenuOpen: boolean; setMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>; auth: IAuthResponse }) => {
     return (
         <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
             <Row className="fixed inset-0 z-10" />
@@ -44,7 +44,7 @@ const MobileNavigation = ({ mobileMenuOpen, setMobileMenuOpen, auth }: { mobileM
                             </Link>
                         </Col>
                         <Col className="py-6 text-right">
-                            <AuthorizationDropDown auth={auth} />
+                            <AuthorizedDropDown auth={auth} />
                         </Col>
                     </Col>
                 </Col>
@@ -53,4 +53,4 @@ const MobileNavigation = ({ mobileMenuOpen, setMobileMenuOpen, auth }: { mobileM
     )
 }
 
-export default MobileNavigation
+export default MobileNavigator

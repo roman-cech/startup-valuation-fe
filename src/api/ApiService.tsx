@@ -1,6 +1,6 @@
 import axiosInstance from "./AxiosInstance";
 import {IAuthResponse, IEvidence, IPairResponse} from "../common/Types";
-import {getAccessTokenFromUser} from "../common/Utils";
+import {getAccessTokenFromUser} from "../common/Util";
 
 type UUID = string
 
@@ -37,6 +37,6 @@ const getEvaluation = (jobId: UUID) => {
     )
 }
 
-const apiService = { logout, login, evaluate, getEvaluation }
+const ApiService = { logout, login, evaluate, getEvaluation }
 
-export default apiService
+export default ApiService

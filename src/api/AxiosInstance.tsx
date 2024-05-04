@@ -1,6 +1,6 @@
 import axios from "axios";
 import {IToken} from "../common/Types";
-import {getAccessTokenFromUser, getExpirationDateFromUser, getRefreshTokenFromUser, updateUserToken} from "../common/Utils";
+import {getAccessTokenFromUser, getExpirationDateFromUser, getRefreshTokenFromUser, updateUserToken} from "../common/Util";
 
 const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_URL,
