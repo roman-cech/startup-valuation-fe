@@ -1,4 +1,4 @@
-import axiosInstance from './AxiosInstance';
+import axiosInstance from "./AxiosInstance";
 import {IAuthResponse, IEvidence, IPairResponse} from "../common/Types";
 import {getAccessTokenFromUser} from "../common/Utils";
 

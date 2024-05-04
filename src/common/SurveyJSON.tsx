@@ -65,30 +65,30 @@ const SurveyJSON =
                             },
                             {
                                 "type": "boolean",
-                                "name": "Do you have previous experience as a team?",
-                                "title": "Do you have previous experience as a team?",
+                                "name": "Does your company have clear goals that align with your team members values?",
+                                "title": "Does your company have clear goals that align with your team members values?",
                                 "isRequired": true,
                                 "valueTrue": "yes",
                                 "valueFalse": "no"
                             },
                             {
                                 "type": "boolean",
-                                "name": "Are your personal goals aligned with the start-up vision?",
-                                "title": "Are your personal goals aligned with the startup vision?",
+                                "name": "Does your team have previous experience working together?",
+                                "title": "Does your team have previous experience working together?",
                                 "isRequired": true,
                                 "valueTrue": "yes",
                                 "valueFalse": "no"
                             },
                             {
                                 "type": "boolean",
-                                "name": "Do your team or advisors have industry expertise?",
-                                "title": "Do your team or advisors have industry expertise?",
+                                "name": "Does your team have insider expertise or external help in the sector of your business?",
+                                "title": "Does your team have insider expertise or external help in the sector of your business?",
                                 "isRequired": true,
                                 "valueTrue": "yes",
                                 "valueFalse": "no"
                             }
                         ],
-                        "title": "Team"
+                        "title": "Team skills"
                     }
                 ]
             },
@@ -101,8 +101,8 @@ const SurveyJSON =
                         "elements": [
                             {
                                 "type": "rating",
-                                "name": "What is your Product Readiness Level?",
-                                "title": "What is your Product Readiness Level?",
+                                "name": "What is your Technology Readiness Level?",
+                                "title": "What is your Technology Readiness Level?",
                                 "rateCount": 9,
                                 "rateMax": 9,
                                 "minRateDescription": "Minimum",
@@ -191,7 +191,7 @@ const SurveyJSON =
                                 "isRequired": true
                             }
                         ],
-                        "title": "Marketing Opportunity"
+                        "title": "Market"
                     }
                 ]
             }
