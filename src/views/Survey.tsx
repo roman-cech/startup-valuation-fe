@@ -1,9 +1,9 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useRecoilState, useRecoilValue} from "recoil";
-import ApiService from "../api/ApiService";
-import authAtom from "../api/authAtom";
-import evaluationAtom from "../api/evaluationAtom";
+import ApiService from "../services/ApiService";
+import authAtom from "../states/authAtom";
+import evaluationAtom from "../states/evaluationAtom";
 import {IAuthResponse, IStartupValuationResponse} from "../common/Types";
 import {Model} from "survey-core";
 import surveyJSON from "../common/SurveyJSON";

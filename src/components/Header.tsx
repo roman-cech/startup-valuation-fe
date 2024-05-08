@@ -7,7 +7,7 @@ import {useRecoilValue} from "recoil";
 import {IAuthResponse} from "../common/Types";
 import AuthorizedDropDown from "./AuthorizedDropDown"
 import MobileNavigator from "./MobileNavigator"
-import authAtom from "../api/authAtom";
+import authAtom from "../states/authAtom";
 import {BarsOutlined, MenuOutlined,} from "@ant-design/icons";
 
 const CustomHeader: React.FC = () => {

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import ApiService from "../api/ApiService";
-import authAtom from "../api/authAtom";
+import ApiService from "../services/ApiService";
+import authAtom from "../states/authAtom";
 import {useRecoilState} from "recoil";
 import {IAuthResponse} from "../common/Types";
 import {Button, Form, Input, Row, Typography} from "antd";

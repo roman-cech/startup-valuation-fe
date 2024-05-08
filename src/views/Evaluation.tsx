@@ -1,8 +1,8 @@
 import React, {useEffect, useRef} from 'react'
 import {useRecoilValue} from "recoil";
 import {IAuthResponse, IStartupValuationResponse} from "../common/Types";
-import evaluationAtom from "../api/evaluationAtom";
-import authAtom from "../api/authAtom";
+import evaluationAtom from "../states/evaluationAtom";
+import authAtom from "../states/authAtom";
 import {useNavigate} from "react-router-dom";
 import Container from "../components/Container";
 import {Button, Progress, Row} from "antd";
